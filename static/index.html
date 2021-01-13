@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>VAPID WebPush Demo</title>
+<meta charset="utf-8">
+<title>WebPushで通知を受けるデモ</title>
 </head>
 <script type="module">
 import { WebPush } from "./WebPush.js";
@@ -20,7 +20,7 @@ window.onload = () => {
             body: "本文本文...........",
             url: "https://fukuno.jig.jp/3093",
             timeout: 5000, // 通知を消すまでの長さ msec （デフォルト0:消さない）
-            delay: 3000, // 表示するまでの時間 msec（デフォルト0）
+            delay: 1000, // 表示するまでの時間 msec（デフォルト0）
         };
         console.log(await WebPush.push(data));
     };
@@ -39,7 +39,7 @@ window.onload = () => {
 </script>
 <body>
 
-<h1>PushGet - WebPushで通知を受ける</h1>
+<h1>WebPushで通知を受けるデモ</h1>
 
 <button id="btnSubscribe">通知を開始</button>
 <button id="btnUnsubscribe">通知停止</button>
