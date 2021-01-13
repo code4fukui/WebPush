@@ -94,6 +94,9 @@ const push = async () => {
   const webpush = new WebPush();
   let { subscription, data } = getParams();
   if (typeof subscription == "string") {
+    if (subscription.endsWith(".json")) {
+      subscription = subscription.substring(0, subscription.length - 5);
+    }
     subscription = JSON.parse(fs.readFileSync("data/subscription/" + subscription + ".json", "utf-8"));
   }
   if (typeof data == "string") {
@@ -123,4 +126,3 @@ const vapidKeys = {
   "privateKey": 'z_Mn_-OJ-aQKRmO5BLa7PAQQWYSEPz2ne1XSn379KU0'
 }
 */
-
