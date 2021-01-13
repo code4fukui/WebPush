@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VAPID WebPush Demo</title>
+</head>
+<script type="module">
+import { WebPush } from "./WebPush.js";
+
+window.onload = () => {
+    btnSubscribe.onclick = () => {
+        WebPush.subscribe();
+    };
+    btnUnsubscribe.onclick = () => {
+        WebPush.unsubscribe();
+    };
+    btnTest.onclick = async evt => {
+        const data = {
+            title: "webpush test",
+            body: "本文本文...........",
+            url: "https://fukuno.jig.jp/3093",
+            timeout: 5000, // 通知を消すまでの長さ msec （デフォルト0:消さない）
+            delay: 3000, // 表示するまでの時間 msec（デフォルト0）
+        };
+        console.log(await WebPush.push(data));
+    };
+    btnLocal.onclick = () => {
+        const title = "見出し";
+        const options = {
+            body : "本文",
+            // icon : "アイコン画像のパス",
+            data : {
+                foo : "任意のデータ"
+            }
+        };
+        const notification = new Notification(title, options);
+    };
+};
+</script>
+<body>
+
+<h1>PushGet - WebPushで通知を受ける</h1>
+
+<button id="btnSubscribe">通知を開始</button>
+<button id="btnUnsubscribe">通知停止</button>
+<button id="btnTest">プッシュ通知テスト</button>
+<button id="btnLocal">ローカル通知テスト</button>
+
+</body>
+</html>
