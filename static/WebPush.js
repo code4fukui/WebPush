@@ -30,6 +30,7 @@ WebPush.subscribe = async () => {
             const vapidPublicKey = WebPush.base64ToUint8Array(vapidPublicKeyTxt);
             const registration = await navigator.serviceWorker.register("./WebPushWorker.js", { scope: "/" });
             console.log(registration, vapidPublicKey);
+            await navigator.serviceWorker.ready;
 
             const subscription = await registration.pushManager.subscribe({
                 userVisibleOnly: true,
