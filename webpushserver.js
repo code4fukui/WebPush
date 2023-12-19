@@ -4,6 +4,8 @@ import { push } from "./push_cmd.js";
 
 await Deno.mkdir("data/subscription", { recursive: true });
 
+const port = Deno.args[0] || 3004;
+
 class MyServer extends Server {
   async api(path, req) {
     if (path == "/api/subscribe") {
@@ -41,4 +43,4 @@ class MyServer extends Server {
     return { res: "err" };
   }
 }
-new MyServer(3004);
+new MyServer(port);
