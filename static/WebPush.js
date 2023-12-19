@@ -9,20 +9,22 @@ WebPush.getID = () => {
     return null; // WebPush.subscribe();
 };
 WebPush.subscribe = async () => {
-    try {
+    return new Promise((resolve, reject) => {
         if (!window.PushManager) {
-            console.log("not supported WebPush");
+            reject("not supported WebPush");
             return;
         }
         //localStorage.removeItem("subscription")
         const uuid = WebPush.getID();
-        console.log(uuid);
+        console.log("WebPush uuid", uuid);
         if (uuid) {
+            resolve(uuid);
             return;
         }
         Notification.requestPermission(async permission => {
             console.log(permission); // 'default', 'granted', 'denied'
             if (permission !== "granted") {
+                reject("not granted");
                 return;
             }
             //const vapidPublicKey = new Uint8Array(await (await fetch("./vapidPublicKey.bin")).arrayBuffer());
@@ -42,24 +44,24 @@ WebPush.subscribe = async () => {
             const res = await fetchJSON("./api/subscribe", subscription);
             console.log(res);
             localStorage.setItem("subscription", res.uuid);
-            return res.uuid;
+            resolve(res.uuid);
         });
-    } catch (e) {
-        console.log(e);
-    }
-    return null;
+    });
 };
 WebPush.unsubscribe = async () => {
-    try {
+    localStorage.removeItem("subscription");
+    return new Promise((resolve, reject) => {
         if (!window.PushManager) {
-            console.log("not supported WebPush");
+            reject("not supported WebPush");
             return;
         }
         Notification.requestPermission(async permission => {
             console.log(permission); // 'default', 'granted', 'denied'
             if (permission !== "granted") {
+                reject("not granted");
                 return;
             }
+
             //const vapidPublicKey = new Uint8Array(await (await fetch("./vapidPublicKey.bin")).arrayBuffer());
             const vapidPublicKeyTxt = await (await fetch("./vapidPublicKey.txt")).text();
             const vapidPublicKey = WebPush.base64ToUint8Array(vapidPublicKeyTxt);
@@ -74,13 +76,11 @@ WebPush.unsubscribe = async () => {
             console.log(res);
             const uuid = WebPush.getID();
             if (uuid) {
-                localStorage.removeItem("subscription");
                 await fetchJSON("./api/unsubscribe", { uuid });
             }
+            resolve(uuid);
         });
-    } catch (e) {
-        console.log(e);
-    }
+    });
 }
 WebPush.base64ToUint8Array = (base64String) => {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);

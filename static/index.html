@@ -1,16 +1,22 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
-<meta charset="utf-8">
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
 <title>WebPushで通知を受けるデモ</title>
 </head>
 <script type="module">
 import { WebPush } from "./WebPush.js";
 
 window.onload = () => {
-    btnSubscribe.onclick = () => {
-        WebPush.subscribe();
+    const uuid = WebPush.getID();
+    if (uuid) {
+        inuuid.value = uuid;
+    }
+
+    btnSubscribe.onclick = async () => {
+        const uuid = await WebPush.subscribe();
+        inuuid.value = uuid;
     };
     btnUnsubscribe.onclick = () => {
         WebPush.unsubscribe();
+        inuuid.value = "";
     };
     btnTest.onclick = async evt => {
         const data = {
@@ -39,10 +45,17 @@ window.onload = () => {
 
 <h1>WebPushで通知を受けるデモ</h1>
 
-<button id="btnSubscribe">通知を開始</button>
-<button id="btnUnsubscribe">通知停止</button>
-<button id="btnTest">プッシュ通知テスト</button>
-<button id="btnLocal">ローカル通知テスト</button>
+<button id="btnSubscribe">subscribe / 通知を開始</button>
+<button id="btnTest">push test / プッシュ通知テスト</button>
+<button id="btnUnsubscribe">unsubstribe / 通知停止</button><br>
+<br>
+WebPush uuid: <input id=inuuid size=40><br>
 
+<h2>おまけ</h2>
+
+<button id="btnLocal">local push / ローカル通知テスト</button>
+
+<hr>
+<a href=https://github.com/taisukef/WebPush/>src on GitHub</a>
 </body>
 </html>
