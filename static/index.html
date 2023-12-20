@@ -1,5 +1,6 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
-<title>WebPushで通知を受けるデモ</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>WebPush demo</title>
 </head>
 <script type="module">
 import { WebPush } from "./WebPush.js";
@@ -43,7 +44,7 @@ window.onload = () => {
 </script>
 <body>
 
-<h1>WebPushで通知を受けるデモ</h1>
+<h1>WebPush demo</h1>
 
 <button id="btnSubscribe">subscribe / 通知を開始</button>
 <button id="btnTest">push test / プッシュ通知テスト</button>
@@ -51,7 +52,7 @@ window.onload = () => {
 <br>
 WebPush uuid: <input id=inuuid size=40><br>
 
-<h2>おまけ</h2>
+<h2>appendix / おまけ</h2>
 
 <button id="btnLocal">local push / ローカル通知テスト</button>
 
