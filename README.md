@@ -6,6 +6,9 @@ WebPush demo for Chrome, Safari, Firefox, iPhone (PWA) and maybe Android
 
 ## setup
 
+- setup [Deno](https://deno.land/) and [Node.js](https://nodejs.org/)
+
+
 ```sh
 npm i
 ```
@@ -19,8 +22,8 @@ yourmailaddress@yourdomain
 ```sh
 node push.mjs
 ```
-→ data/vapidKeys.json
-→ static/vapidPublicKey.txt
+- → data/vapidKeys.json
+- → static/vapidPublicKey.txt
 
 ```sh
 deno run -A webpushserver.js 
@@ -38,6 +41,12 @@ node push.mjs [uuid] test
 ## blog
 
 - https://fukuno.jig.jp/3093
+
+## dependencies
+
+- [Node.js](https://nodejs.org/)
+- [Deno](https://deno.land)
+- [web-push](https://www.npmjs.com/package/web-push)
 
 ## reference
 
