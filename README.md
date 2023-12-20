@@ -2,7 +2,7 @@
 
 WebPush demo for Chrome, Safari, Firefox, iPhone (PWA) and maybe Android
 
-* iPhone PWA must have a meta tag: <meta name="apple-mobile-web-app-capable" content="yes">
+* iPhone PWA must have a meta tag: &lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;
 
 ## setup
 
