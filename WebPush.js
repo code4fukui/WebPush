@@ -39,3 +39,6 @@ export const push = async (subscription, data) => {
   }
   await webpush.sendNotification(subscription, data);
 };
+
+const WebPush = { push };
+export default WebPush;
