@@ -1,5 +1,6 @@
 import webpush from "https://code4fukui.github.io/web-push/src/index.js";
 //import webpush from "../../util/web-push/src/index.js";
+import { UUID } from "https://code4sabae.github.io/js/UUID.js";
 
 const getVAPIDKeys = async () => {
   const fnmail = "data/mailaddress.txt";
@@ -38,6 +39,21 @@ export const push = async (subscription, data) => {
     data = { title: "WebPush", body: data };
   }
   await webpush.sendNotification(subscription, data);
+};
+
+export const subscribe = async (subscription) => {
+    const uuid = UUID.generate();
+    await Deno.writeTextFile("data/subscription/" + uuid + ".json", subscription);
+    list.push(uuid);
+    return { uuid };
+};
+
+export const unsubscribpe = async (uuid) => {
+    await Deno.remove("data/subscription/" + uuid + ".json");
+
+    const n = list.indexOf(uuid);
+    if (n >= 0) list.splice(n, 1);
+    return { uuid };
 };
 
 const WebPush = { push };
