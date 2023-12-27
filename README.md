@@ -2,7 +2,10 @@
 
 WebPush on Deno demo for Chrome, Safari, Firefox, iPhone (PWA) and Android
 
-* iPhone PWA must have a meta tag: &lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;
+* iPhone PWA must have a meta tag:
+```html
+&lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;
+```
 
 ## setup
 
@@ -40,7 +43,7 @@ deno run -A push.js [uuid] test
 
 ## blog
 
-- https://fukuno.jig.jp/3093
+- https://fukuno.jig.jp/4171
 
 ## dependencies
 
