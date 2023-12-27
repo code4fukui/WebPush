@@ -1,17 +1,12 @@
-# webpush
+# WebPush on Deno
 
-WebPush demo for Chrome, Safari, Firefox, iPhone (PWA) and Android
+WebPush on Deno demo for Chrome, Safari, Firefox, iPhone (PWA) and Android
 
 * iPhone PWA must have a meta tag: &lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;
 
 ## setup
 
-- setup [Deno](https://deno.land/) and [Node.js](https://nodejs.org/)
-
-
-```sh
-npm i
-```
+- setup [Deno](https://deno.land/)
 
 ```sh
 mkdir data
@@ -20,7 +15,7 @@ yourmailaddress@yourdomain
 ```
 
 ```sh
-node push.mjs
+deno run -A push.js
 ```
 - → data/vapidKeys.json
 - → static/vapidPublicKey.txt
@@ -35,7 +30,7 @@ deno run -A webpushserver.js
 - copy the WebPush uuid
 
 ```sh
-node push.mjs [uuid] test
+deno run -A push.js [uuid] test
 ```
 
 ## blog
@@ -44,9 +39,8 @@ node push.mjs [uuid] test
 
 ## dependencies
 
-- [Node.js](https://nodejs.org/)
 - [Deno](https://deno.land)
-- [web-push](https://www.npmjs.com/package/web-push)
+- [web-push for Deno](https://github.com/code4fukui/web-push/) forked from [web-push](https://www.npmjs.com/package/web-push)
 
 ## reference
 

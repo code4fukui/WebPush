@@ -119,10 +119,3 @@ const push = async () => {
   console.log(JSON.stringify(res));
 };
 push();
-
-/*
-const vapidKeys = {
-  "publicKey": 'BFe2peXxO05umvz6tiSCUIsGtLhtLl0uvvy-FjqiGlsUBxVQOQNgJ-4b3RcRKVBJ-YaqNKlOhyplulvrUSM1vuE',
-  "privateKey": 'z_Mn_-OJ-aQKRmO5BLa7PAQQWYSEPz2ne1XSn379KU0'
-}
-*/
