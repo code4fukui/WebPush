@@ -4,7 +4,7 @@ WebPush on Deno demo for Chrome, Safari, Firefox, iPhone (PWA) and Android
 
 * iPhone PWA must have a meta tag:
 ```html
-&lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;
+<meta name="apple-mobile-web-app-capable" content="yes">
 ```
 
 ## setup
