@@ -29,7 +29,7 @@ deno run -A push.js
 - → static/vapidPublicKey.txt
 
 ```sh
-deno run -A webpushserver.js 
+deno run -A server.js 
 ```
 
 - open http://localhost:8000/
