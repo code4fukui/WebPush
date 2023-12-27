@@ -1,8 +1,7 @@
 import * as WebPush from "./WebPush.js";
 
 const getParams = () => {
-  const argv = ["", "", ...Deno.args];//process.argv;
-  if (argv.length - 2 < 2) {
+  if (Deno.args.length < 2) {
       console.log("push.mjs [subscription(json)] [data(json)]");
       const subscription = {
         "endpoint": "https://fcm.googleapis.com/fcm/send/fgeD9VHBnwk:APA91bG63RKQCn2JAHIpPhAaqDyIY87702TYDWX3SV1Ik22sbDHPY0twLKBR889v3VL1j5lxUkus2WT2uxErCcNWo8q_1rTSil4O78YwLqkJ8gr87hXEDui6E7R59mhNsk3_pGga4cds",
@@ -32,8 +31,8 @@ const getParams = () => {
       return "" + s;
     }
   };
-  const subscription = parseJSON(argv[2]);
-  const data = parseJSON(argv[3]);
+  const subscription = parseJSON(Deno.args[0]);
+  const data = parseJSON(Deno.args[1]);
   return { subscription, data };
 };
 
