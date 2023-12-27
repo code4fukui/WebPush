@@ -48,7 +48,7 @@ export const subscribe = async (subscription) => {
     return { uuid };
 };
 
-export const unsubscribpe = async (uuid) => {
+export const unsubscribe = async (uuid) => {
     await Deno.remove("data/subscription/" + uuid + ".json");
 
     const n = list.indexOf(uuid);
