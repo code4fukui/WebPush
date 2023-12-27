@@ -9,6 +9,11 @@ WebPush on Deno demo for Chrome, Safari, Firefox, iPhone (PWA) and Android
 - setup [Deno](https://deno.land/)
 
 ```sh
+git clone https://github.com/code4fukui/WebPush.git
+cd WebPush
+```
+
+```sh
 mkdir data
 cat > data/mailaddress.txt
 yourmailaddress@yourdomain
