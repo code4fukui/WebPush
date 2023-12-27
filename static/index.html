@@ -2,7 +2,7 @@
 <link rel="apple-touch-icon" href="./icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>WebPush demo</title>
-</head>
+</head><body>
 <script type="module">
 import { WebPush } from "./WebPush.js";
 
@@ -22,9 +22,9 @@ window.onload = () => {
   };
   btnTest.onclick = async evt => {
     const data = {
-      title: "webpush test",
-      body: "本文本文...........",
-      url: "https://fukuno.jig.jp/3093",
+      title: "WebPush test",
+      body: "WebPush for Deno に関するブログです",
+      url: "https://fukuno.jig.jp/4171",
       timeout: 5000, // 通知を消すまでの長さ msec （デフォルト0:消さない）
       delay: 1000, // 表示するまでの時間 msec（デフォルト0）
     };
@@ -43,7 +43,6 @@ window.onload = () => {
   };
 };
 </script>
-<body>
 
 <h1>WebPush demo</h1>
 
@@ -58,6 +57,13 @@ WebPush uuid: <input id=inuuid size=40><br>
 <button id="btnLocal">local push / ローカル通知テスト</button>
 
 <hr>
-<a href=https://github.com/taisukef/WebPush/>src on GitHub</a>
+<a href=https://github.com/code4fukui/WebPush/>src on GitHub</a>
+
+<style>
+body {
+  font-family: sans-serif;
+}
+</style>
+
 </body>
 </html>
