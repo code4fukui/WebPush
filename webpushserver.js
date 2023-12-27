@@ -1,46 +1,40 @@
-import { Server } from "https://code4sabae.github.io/js/Server.js";
+import { serveAPI } from "https://js.sabae.cc/wsutil.js";
 import { UUID } from "https://code4sabae.github.io/js/UUID.js";
-import { push } from "./push_cmd.js";
+import WebPush from "./WebPush.js";
 
 await Deno.mkdir("data/subscription", { recursive: true });
 
-const port = Deno.args[0] || 3004;
-
-class MyServer extends Server {
-  async api(path, req) {
-    if (path == "/api/subscribe") {
-      try {
-        const subscription = JSON.stringify(req);
-        const uuid = UUID.generate();
-        await Deno.writeTextFile("data/subscription/" + uuid + ".json", subscription);
-        console.log(uuid);
-        return { uuid };
-      } catch (e) {
-        console.log(e);
-      }
+serveAPI("/api/", async (param, req, path, conninfo) => {
+  if (path == "/api/subscribe") {
+    try {
+      const subscription = JSON.stringify(param);
+      const uuid = UUID.generate();
+      await Deno.writeTextFile("data/subscription/" + uuid + ".json", subscription);
+      console.log("subscribe", uuid);
+      return { uuid };
+    } catch (e) {
+      console.log(e);
     }
-    if (path == "/api/unsubscribe") {
-      try {
-        console.log(req);
-        const uuid = req.uuid;
-        console.log(uuid);
-        await Deno.remove("data/subscription/" + uuid + ".json");
-        return { uuid };
-      } catch (e) {
-        console.log(e);
-      }
-    }
-    if (path == "/api/push") {
-      try {
-        const uuid = req.uuid;
-        const data = req.data;
-        return push(uuid, data);
-        return { uuid };
-      } catch (e) {
-        console.log(e);
-      }
-    }
-    return { res: "err" };
   }
-}
-new MyServer(port);
+  if (path == "/api/unsubscribe") {
+    try {
+      const uuid = param.uuid;
+      console.log("unsubscribe", uuid);
+      await Deno.remove("data/subscription/" + uuid + ".json");
+      return { uuid };
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  if (path == "/api/push") {
+    try {
+      const uuid = param.uuid;
+      const data = param.data;
+      console.log("push", uuid, data);
+      return await WebPush.push(uuid, data);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  return { res: "err" };
+});
