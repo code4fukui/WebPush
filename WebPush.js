@@ -56,5 +56,5 @@ export const unsubscribe = async (uuid) => {
     return { uuid };
 };
 
-const WebPush = { push };
+const WebPush = { push, subscribe, unsubscribe };
 export default WebPush;
