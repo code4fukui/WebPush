@@ -52,4 +52,6 @@ deno run -A push.js [uuid] test
 
 ## reference
 
-- https://developer.mozilla.org/en-US/docs/Web/API/notification
+- [ウェブプッシュ プロトコル  |  Articles  |  web.dev](https://web.dev/articles/push-notifications-web-push-protocol?hl=ja)
+- [Notification - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/notification)
+- [draft-ietf-webpush-encryption-09](https://datatracker.ietf.org/doc/html/draft-ietf-webpush-encryption)
