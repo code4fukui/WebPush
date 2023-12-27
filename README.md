@@ -29,7 +29,7 @@ deno run -A push.js
 deno run -A webpushserver.js 
 ```
 
-- open http://localhost:3004/
+- open http://localhost:8000/
 - press the "subscribe" button
 - press the "push test" button
 - copy the WebPush uuid
