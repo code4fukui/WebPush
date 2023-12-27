@@ -2,7 +2,10 @@
 
 WebPush on Deno demo for Chrome, Safari, Firefox, iPhone (PWA) and Android
 
-* iPhone PWA must have a meta tag: &lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;
+* iPhone PWA must have a meta tag:
+```html
+<meta name="apple-mobile-web-app-capable" content="yes">
+```
 
 ## setup
 
@@ -26,10 +29,10 @@ deno run -A push.js
 - → static/vapidPublicKey.txt
 
 ```sh
-deno run -A webpushserver.js 
+deno run -A server.js 
 ```
 
-- open http://localhost:3004/
+- open http://localhost:8000/
 - press the "subscribe" button
 - press the "push test" button
 - copy the WebPush uuid
@@ -40,7 +43,7 @@ deno run -A push.js [uuid] test
 
 ## blog
 
-- https://fukuno.jig.jp/3093
+- https://fukuno.jig.jp/4171
 
 ## dependencies
 
@@ -49,4 +52,6 @@ deno run -A push.js [uuid] test
 
 ## reference
 
-- https://developer.mozilla.org/en-US/docs/Web/API/notification
+- [ウェブプッシュ プロトコル  |  Articles  |  web.dev](https://web.dev/articles/push-notifications-web-push-protocol?hl=ja)
+- [Notification - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/notification)
+- [draft-ietf-webpush-encryption-09](https://datatracker.ietf.org/doc/html/draft-ietf-webpush-encryption)
