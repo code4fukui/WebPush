@@ -7,40 +7,40 @@
 import { WebPush } from "./WebPush.js";
 
 window.onload = () => {
-    const uuid = WebPush.getID();
-    if (uuid) {
-        inuuid.value = uuid;
-    }
+  const uuid = WebPush.getID();
+  if (uuid) {
+    inuuid.value = uuid;
+  }
 
-    btnSubscribe.onclick = async () => {
-        const uuid = await WebPush.subscribe();
-        inuuid.value = uuid;
+  btnSubscribe.onclick = async () => {
+    const uuid = await WebPush.subscribe();
+    inuuid.value = uuid;
+  };
+  btnUnsubscribe.onclick = () => {
+    WebPush.unsubscribe();
+    inuuid.value = "";
+  };
+  btnTest.onclick = async evt => {
+    const data = {
+      title: "webpush test",
+      body: "本文本文...........",
+      url: "https://fukuno.jig.jp/3093",
+      timeout: 5000, // 通知を消すまでの長さ msec （デフォルト0:消さない）
+      delay: 1000, // 表示するまでの時間 msec（デフォルト0）
     };
-    btnUnsubscribe.onclick = () => {
-        WebPush.unsubscribe();
-        inuuid.value = "";
+    console.log(await WebPush.push(data));
+  };
+  btnLocal.onclick = () => {
+    const title = "見出し";
+    const options = {
+      body : "本文",
+      // icon : "アイコン画像のパス",
+      data : {
+        foo : "任意のデータ"
+      }
     };
-    btnTest.onclick = async evt => {
-        const data = {
-            title: "webpush test",
-            body: "本文本文...........",
-            url: "https://fukuno.jig.jp/3093",
-            timeout: 5000, // 通知を消すまでの長さ msec （デフォルト0:消さない）
-            delay: 1000, // 表示するまでの時間 msec（デフォルト0）
-        };
-        console.log(await WebPush.push(data));
-    };
-    btnLocal.onclick = () => {
-        const title = "見出し";
-        const options = {
-            body : "本文",
-            // icon : "アイコン画像のパス",
-            data : {
-                foo : "任意のデータ"
-            }
-        };
-        const notification = new Notification(title, options);
-    };
+    const notification = new Notification(title, options);
+  };
 };
 </script>
 <body>
