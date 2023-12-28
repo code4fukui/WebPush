@@ -17,13 +17,7 @@ cd WebPush
 ```
 
 ```sh
-mkdir data
-cat > data/mailaddress.txt
-yourmailaddress@yourdomain
-```
-
-```sh
-deno run -A push.js
+deno run -A init.js yourmailaddress@yourdomain
 ```
 - → data/vapidKeys.json
 - → static/vapidPublicKey.txt

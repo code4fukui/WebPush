@@ -2,26 +2,8 @@ import webpush from "https://code4fukui.github.io/web-push/src/index.js";
 //import webpush from "../../util/web-push/src/index.js";
 
 const getVAPIDKeys = async () => {
-  const fnmail = "data/mailaddress.txt";
-  let mailaddress = null;
-  try {
-    mailaddress = "mailto:" + (await Deno.readTextFile(fnmail)).trim();
-  } catch (e) {
-    console.log(e);
-    console.log("set your mail address in " + fnmail);
-    Deno.exit(1);
-  }
   const fn = "data/vapidKeys.json";
-  const fnpub = "static/vapidPublicKey.txt";
-  try {
-    return JSON.parse(await Deno.readTextFile(fn));
-  } catch (e) {
-    const vapidKeys = webpush.generateVAPIDKeys();
-    vapidKeys.mailaddress = mailaddress;
-    await Deno.writeTextFile(fn, JSON.stringify(vapidKeys));
-    await Deno.writeTextFile(fnpub, vapidKeys.publicKey);
-    return vapidKeys;
-  }
+  return JSON.parse(await Deno.readTextFile(fn));
 };
 
 const vapidKeys = await getVAPIDKeys();
