@@ -1,5 +1,7 @@
 # WebPush on Deno
 
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
+
 WebPush demo for Chrome, Safari, Firefox, iPhone (PWA), and Android, built on Deno.
 
 ## Features
