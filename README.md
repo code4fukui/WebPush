@@ -51,4 +51,4 @@ WebPush demo for Chrome, Safari, Firefox, iPhone (PWA), and Android, built on De
 - [draft-ietf-webpush-encryption-09](https://datatracker.ietf.org/doc/html/draft-ietf-webpush-encryption)
 
 ## License
-MIT License
+MIT License — see [LICENSE](LICENSE).

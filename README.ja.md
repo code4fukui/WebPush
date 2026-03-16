@@ -2,9 +2,6 @@
 
 Deno上でWebPush機能を実装したデモアプリケーションです。Chrome、Safari、Firefox、iPhone (PWA)、Androidでの動作を確認できます。
 
-## デモ
-https://code4fukui.github.io/WebPush/
-
 ## 機能
 - WebPush通知の配信
 - WebPush通知のカスタマイズ (タイトル、本文、アイコン、URL、通知時間)
