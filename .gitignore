@@ -3,3 +3,7 @@ data/vapidKeys.json
 static/vapidPublicKey.txt
 subscription/
 node_modules/
+
+# meta-ops cleanup
+.DS_Store
+Thumbs.db
